@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1">
+      <form [formGroup]="SignupForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input
+            type="text"
+            class="form-control"
+            id="age"
+            formControlName="age"
+          />
+          <span
+            class="help-block"
+            *ngIf="
+              !SignupForm.get('age').valid && SignupForm.get('age').touched
+            "
+          >
+            <span *ngIf="SignupForm.get('age').errors['min']"
+              >Age is invalid</span
+            >
+            <span *ngIf="SignupForm.get('age').errors['max']"
+              >Age is invalid</span
+            >
+            <span *ngIf="SignupForm.get('age').errors['required']"
+              >field is required</span
+            >
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="maxAge">MaxAge</label>
+          <input
+            type="maxAge"
+            class="form-control"
+            id="maxAge"
+            formControlName="maxAge"
+          />
+
+          <span
+            class="help-block"
+            *ngIf="
+              !SignupForm.get('maxAge').valid &&
+              SignupForm.get('maxAge').touched
+            "
+          >
+            please enter a valid age limit
+          </span>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
